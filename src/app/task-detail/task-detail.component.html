@@ -1,0 +1,71 @@
+<form [formGroup]="taskForm" class="signupLogin" (ngSubmit)="onSubmit()">
+  <div class="signupLogin__control signupLogin__email-control">
+    <label for="title" class="signupLogin__labelfor-control">Title</label>
+    <input
+      [readOnly]="isViewForm"
+      formControlName="title"
+      class="signupLogin__input"
+      id="title"
+      type="text"
+      placeholder="Enter task title"
+    />
+    <span
+      class="validation-message"
+      *ngIf="
+        (taskFormControl['title'].touched || submitted) &&
+        taskFormControl['title'].errors?.['required']
+      "
+    >
+      Title is required!
+    </span>
+  </div>
+
+  <div class="signupLogin__control signupLogin__email-control">
+    <label for="date" class="signupLogin__labelfor-control">Date</label>
+    <input
+      [readOnly]="isViewForm"
+      formControlName="dueDate"
+      class="signupLogin__input"
+      id="date"
+      type="date"
+      [min]="date | date: 'yyyy-MM-dd'"
+    />
+    <span
+      class="validation-message"
+      *ngIf="
+        (taskFormControl['dueDate'].touched || submitted) &&
+        taskFormControl['dueDate'].errors?.['required']
+      "
+    >
+      Date is required!
+    </span>
+  </div>
+  <div class="signupLogin__control">
+    <label for="description" class="signupLogin__labelfor-control"
+      >Description</label
+    >
+    <textarea
+      [readOnly]="isViewForm"
+      formControlName="description"
+      rows="10"
+      cols="20"
+      class="signupLogin__textarea"
+      id="password"
+      type="password"
+      placeholder="Enter task description"
+    ></textarea>
+    <span
+      class="validation-message"
+      *ngIf="
+        (taskFormControl['description'].touched || submitted) &&
+        taskFormControl['description'].errors?.['required']
+      "
+    >
+      Description is required!
+    </span>
+  </div>
+
+  <button type="submit" *ngIf="!isViewForm" class="signupLogin__button">
+    Save
+  </button>
+</form>

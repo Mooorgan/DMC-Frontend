@@ -1,0 +1,17 @@
+<nav class="nav">
+  <h1>Task management minimalistic</h1>
+  <div class="links-group">
+    <div [routerLink]="['/tasks']" class="link">Tasks</div>
+    <ng-container
+      *ngIf="
+        (authStatus$ | async) && (username$ | async) as username;
+        else login
+      "
+    >
+      <div class="link" (click)="onLogout()">Logout({{ username }})</div>
+    </ng-container>
+    <ng-template #login>
+      <div [routerLink]="['/']" class="link">Login</div>
+    </ng-template>
+  </div>
+</nav>

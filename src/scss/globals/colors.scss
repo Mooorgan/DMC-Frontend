@@ -1,0 +1,15 @@
+:root {
+  --base-purple-color: 252, 100%;
+  --purple-color: hsl(var(--base-purple-color), 62%);
+  --purple-hover-color: hsl(var(--base-purple-color), 84%);
+  --light-purple-color: hsl(var(--base-purple-color), 96%);
+
+  --base-darkWhite-color: 0, 0%;
+  --dark-grey-color: hsl(var(--base-darkWhite-color), 20%);
+  --grey-color: hsl(var(--base-darkWhite-color), 45%);
+  --borders-color: hsl(var(--base-darkWhite-color), 85%);
+  --light-grey-color: hsl(var(--base-darkWhite-color), 98%);
+  --white-color: hsl(var(--base-darkWhite-color), 100%);
+
+  --red-color: hsl(0, 100%, 61%);
+}

@@ -1,0 +1,19 @@
+@use '../../scss/utils' as u;
+
+:host {
+  display: block;
+}
+
+.nav {
+  @include u.flexBox(null, space-between, center);
+  padding: u.rem(20);
+  background-color: aqua;
+}
+
+.links-group {
+  @include u.flexBox(u.rem(100), space-around, center);
+
+  .link {
+    cursor: pointer;
+  }
+}

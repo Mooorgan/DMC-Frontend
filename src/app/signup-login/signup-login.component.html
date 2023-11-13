@@ -1,0 +1,133 @@
+<!-- <a [routerLink]="['/']" class="logo">
+  <img
+    src="../../assets/images/logo-devlinks-large.svg"
+    alt="logo of devlinks"
+    width="182.5"
+    height="40"
+  />
+</a> -->
+<article class="wrapper">
+  <header class="header">
+    <ng-container *ngIf="loginDisplay; else signup">
+      <h1 class="header__heading">Login</h1>
+      <p class="header__description">
+        Add your details below to get back in the app
+      </p>
+    </ng-container>
+
+    <ng-template #signup>
+      <h1 class="header__heading">Signup</h1>
+      <p class="header__description">Add your details below to enter the app</p>
+    </ng-template>
+  </header>
+  <form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="signupLogin">
+    <ng-container *ngIf="!loginDisplay">
+      <div class="signupLogin__control signupLogin__email-control">
+        <label for="username" class="signupLogin__labelfor-control"
+          >Username</label
+        >
+        <input
+          formControlName="username"
+          class="signupLogin__input"
+          id="username"
+          type="text"
+          placeholder="Enter your username"
+        />
+        <span
+          class="validation-message"
+          *ngIf="
+            (authFormControl['username'].touched || submitted) &&
+            authFormControl['username'].errors?.['required']
+          "
+        >
+          Username is required!
+        </span>
+      </div>
+    </ng-container>
+
+    <div class="signupLogin__control signupLogin__email-control">
+      <label for="email" class="signupLogin__labelfor-control"
+        >Email address</label
+      >
+      <input
+        formControlName="email"
+        class="signupLogin__input"
+        id="email"
+        type="text"
+        placeholder="e.g. alex@gmail.com"
+      />
+      <span
+        class="validation-message"
+        *ngIf="
+          (authFormControl['email'].touched || submitted) &&
+          authFormControl['email'].errors?.['required']
+        "
+      >
+        Title is required!
+      </span>
+      <span
+        class="validation-message"
+        *ngIf="
+          (authFormControl['email'].touched || submitted) &&
+          authFormControl['email'].errors?.['email']
+        "
+      >
+        Email Format is wrong!
+      </span>
+    </div>
+    <div class="signupLogin__control signupLogin__password-control">
+      <label for="password" class="signupLogin__labelfor-control"
+        >Password</label
+      >
+      <input
+        formControlName="password"
+        class="signupLogin__input"
+        id="password"
+        type="password"
+        placeholder="Enter your password"
+      />
+      <span
+        class="validation-message"
+        *ngIf="
+          (authFormControl['password'].touched || submitted) &&
+          authFormControl['password'].errors?.['required']
+        "
+      >
+        Password is required!
+      </span>
+      <span
+        class="validation-message"
+        *ngIf="
+          (authFormControl['password'].touched || submitted) &&
+          authFormControl['password'].errors?.['minlength']
+        "
+      >
+        Minimum length should be
+        {{ authFormControl['password'].errors?.['minlength'].requiredLength }}
+      </span>
+    </div>
+    <!-- {{ authFormControl['password'].errors | json }} -->
+    <ng-container *ngIf="loginDisplay; else signupButton">
+      <button type="submit" class="signupLogin__button">Login</button>
+    </ng-container>
+    <ng-template #signupButton>
+      <button type="submit" class="signupLogin__button">Signup</button>
+    </ng-template>
+  </form>
+
+  <ng-container *ngIf="loginDisplay; else signupFooter">
+    <aside class="account-state-info">
+      <p class="account-state-info__question">Don't have an account?</p>
+      <a class="account-state-info__link" [routerLink]="['/signup']"
+        >Create account</a
+      >
+    </aside>
+  </ng-container>
+
+  <ng-template #signupFooter>
+    <aside class="account-state-info">
+      <p class="account-state-info__question">Already have an account?</p>
+      <a class="account-state-info__link" [routerLink]="['/']">Login account</a>
+    </aside>
+  </ng-template>
+</article>

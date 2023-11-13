@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'Instrument Sans';
+  src: url('../../assets/fonts/static/InstrumentSans-Bold.ttf')
+    format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Instrument Sans';
+  src: url('../../assets/fonts/static/InstrumentSans-Regular.ttf')
+    format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Instrument Sans';
+  src: url('../../assets/fonts/static/InstrumentSans-SemiBold.ttf')
+    format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+:root {
+  --font-instrumentSans: 'Instrument Sans', sans-serif;
+}

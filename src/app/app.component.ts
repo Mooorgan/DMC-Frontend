@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AuthService } from './services/auth.service';
 
 @Component({
-  selector: 'app-root',
+  selector: 'dmc-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
-  title = 'TaskManagement-Frontend';
+export class AppComponent implements OnInit {
+  constructor(private auth: AuthService) {}
+
+  ngOnInit(): void {
+    this.auth.autoAuthUser();
+  }
 }

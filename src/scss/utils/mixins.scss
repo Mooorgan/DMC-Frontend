@@ -1,0 +1,64 @@
+@mixin getFont($value, $ff: null, $lh: null) {
+  @if $ff==ff {
+    font-family: var(--font-instrumentSans);
+  } @else if $ff!=null and $ff!=ff {
+    @error "Unknown font family argument:#{$ff}";
+  }
+  @if $lh==lh {
+    line-height: var(--font-line-height);
+  } @else if $lh!=null and $lh!=lh {
+    @error "Unknown line height argument:#{$lh}";
+  }
+  @if $value==boldLarge {
+    font-size: var(--font-size-large);
+    font-weight: bold;
+  } @else if $value==boldMedium {
+    font-size: var(--font-size-medium);
+    font-weight: bold;
+  } @else if $value==regularMedium {
+    font-size: var(--font-size-medium);
+    font-weight: normal;
+  } @else if $value==regularSmall {
+    font-size: var(--font-size-small);
+    font-weight: normal;
+  } @else {
+    @error "Unknown font type:#{$value}";
+  }
+}
+
+@mixin flexBox(
+  $gap: null,
+  $justifyContent: null,
+  $alignItems: null,
+  $direction: null,
+  $wrap: null,
+  $alignContent: null
+) {
+  display: flex;
+  gap: $gap;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+}
+
+@mixin grid(
+  $gtr: null,
+  $gtc: null,
+  $columnGap: null,
+  $rowGap: null,
+  $justifyItems: null,
+  $alignItems: null,
+  $justifyContent: null,
+  $alignContent: null
+) {
+  display: grid;
+  grid-template-rows: $gtr;
+  grid-template-columns: $gtc;
+  column-gap: $columnGap;
+  row-gap: $rowGap;
+  justify-items: $justifyItems;
+  align-items: $alignItems;
+  justify-content: $justifyContent;
+  align-content: $alignContent;
+}

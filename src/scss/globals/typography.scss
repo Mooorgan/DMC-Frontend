@@ -1,0 +1,12 @@
+@use '../utils' as u;
+
+:root {
+  --font-size-large: #{u.rem(32)};
+  --font-size-medium: #{u.rem(16)};
+  --font-size-small: #{u.rem(12)};
+  --font-line-height: 150%;
+}
+
+a:is(:link, :visited, :active) {
+  text-decoration: none;
+}

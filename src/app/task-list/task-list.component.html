@@ -1,0 +1,47 @@
+<aside class="aside">
+  <a [routerLink]="['/', 'create']">
+    <button type="button" class="create">Create</button>
+  </a>
+</aside>
+
+<div class="main-container">
+  <div class="table-container">
+    <div class="table-row heading">
+      <div class="row-sn">S.N.</div>
+      <div class="row-item">Title</div>
+      <div class="row-item">Description</div>
+      <div class="row-item">
+        Due Date &nbsp;
+        <select (change)="onSort($event)">
+          <option *ngFor="let sortValue of sortValues" [value]="sortValue">
+            {{ sortValue }}
+          </option>
+        </select>
+      </div>
+      <div class="row-item">Creator</div>
+    </div>
+    <div
+      class="table-row"
+      [ngClass]="{ self: isMyTask }"
+      *ngFor="
+        let task of (tasks$ | async)?.tasks | dateSort: sortValue;
+        let i = index
+      "
+    >
+      <div class="row-sn">{{ i + 1 }}</div>
+      <div class="row-item">{{ task.title }}</div>
+      <div class="row-item">{{ task.description }}</div>
+      <div class="row-item">{{ task.dueDate | date }}</div>
+      <div class="row-item">{{ task.username }}</div>
+      <ng-container *ngIf="(authStatus$ | async) && userId === task.creator">
+        <div class="absolute">
+          <div class="buttons">
+            <button [routerLink]="['/', 'view', task.id]">View</button>
+            <button [routerLink]="['/', 'edit', task.id]">Edit</button>
+            <button (click)="onTaskDelete(task.id)">Delete</button>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
