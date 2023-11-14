@@ -20,7 +20,7 @@ export class TaskService {
     private router: Router
   ) {}
 
-  getTasks(tasksPerPage: number, currentPage: number) {
+  getTasks(tasksPerPage?: number, currentPage?: number) {
     const queryParams = `?pageSize=${tasksPerPage}&page=${currentPage}`;
     this.http
       .get<any>(BACKEND_TASK_URL + queryParams)
