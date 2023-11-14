@@ -12,6 +12,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthJwtInterceptor } from './interceptors/authjwt.interceptor';
 import { DateSortPipe } from './pipes/date-sort.pipe';
+import { NotificationsModule } from './notifications/notifications.module';
+import { HttpResponseInterceptor } from './interceptors/http-response.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,9 +30,15 @@ import { DateSortPipe } from './pipes/date-sort.pipe';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NotificationsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthJwtInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpResponseInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

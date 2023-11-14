@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  right: 10px;
+  width: 300px;
+}
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert-danger {
+  background-color: #c22e2e;
+  border-color: #ebccd1;
+  color: #e4dfdf;
+}
+
+.alert-success {
+  background-color: #5b9246;
+  border-color: #d6e9c6;
+  color: #e9eee9;
+}
+.close {
+  margin-left: 50px;
+  width: 20px;
+  height: 20px;
+  border: 8px;
+  border-color: #e4dfdf;
+  background-color: rgb(22, 12, 158);
+  border-radius: 50%;
+  right: 10px;
+  top: 20px;
+  color: #e9eee9;
+  cursor: pointer;
+}
