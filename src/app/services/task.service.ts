@@ -26,10 +26,8 @@ export class TaskService {
       .get<any>(BACKEND_TASK_URL + queryParams)
       .pipe(
         map((taskData) => {
-          console.log(taskData, 'taskData');
           return {
             tasks: taskData.result.tasks.map((task: any) => {
-              console.log(task, 'task');
               return {
                 title: task.title,
                 description: task.description,

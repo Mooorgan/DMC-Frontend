@@ -24,10 +24,8 @@ export class HttpResponseInterceptor implements HttpInterceptor {
       tap({
         next: (value: any) => {
           this.notification.addSuccess(value.body.message);
-          console.log(value, 'success');
         },
         error: (value) => {
-          console.log(value, 'error');
           this.notification.addError(value.error.message);
         },
       })

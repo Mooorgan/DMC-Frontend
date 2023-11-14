@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { map, Observable, Subscription } from 'rxjs';
-import { AuthService } from '../services/auth.service';
+import { Subscription } from 'rxjs';
 import { TaskService } from '../services/task.service';
 
 @Component({
@@ -28,11 +27,8 @@ export class TaskDetailComponent implements OnInit, OnDestroy {
     private task: TaskService
   ) {}
   ngOnInit(): void {
-    console.log(this.activeRoute.url);
-
     this.paramMapSubscription = this.activeRoute.paramMap.subscribe(
       (params) => {
-        console.log(params.get('taskId'));
         const taskIdFromURL = params.get('taskId');
         if (taskIdFromURL !== null) {
           this.taskId = taskIdFromURL;
@@ -41,7 +37,6 @@ export class TaskDetailComponent implements OnInit, OnDestroy {
     );
 
     this.urlSubscription = this.activeRoute.url.subscribe((value) => {
-      console.log(value);
       if (value[0].path === 'create') {
         this.isEditForm = false;
       } else if (value[0].path === 'edit') {
@@ -52,7 +47,6 @@ export class TaskDetailComponent implements OnInit, OnDestroy {
         this.getTask(this.taskId);
       }
       this.date = new Date();
-      console.log(this.date.toISOString().slice(0, 10));
     });
 
     this.taskForm = this.fb.group({
@@ -67,8 +61,6 @@ export class TaskDetailComponent implements OnInit, OnDestroy {
     if (this.taskForm.invalid) {
       return;
     }
-    console.log('Form Submitted');
-    console.log(this.taskForm.value);
     const { title, description, dueDate } = this.taskForm.value;
     if (this.isEditForm) {
       this.task.updateTask(this.taskId, title, description, dueDate);
@@ -88,9 +80,6 @@ export class TaskDetailComponent implements OnInit, OnDestroy {
       this.taskFormControl['dueDate'].setValue(
         response.result.dueDate.slice(0, 10)
       );
-      // this.titleFromAPI = response.title;
-      // this.descriptionFromAPI = response.description;
-      // this.dueDateFromAPI = response.dueDate;
     });
   }
 

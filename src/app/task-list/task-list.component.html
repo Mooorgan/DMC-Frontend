@@ -36,9 +36,15 @@
       <ng-container *ngIf="(authStatus$ | async) && userId === task.creator">
         <div class="absolute">
           <div class="buttons">
-            <button [routerLink]="['/', 'view', task.id]">View</button>
-            <button [routerLink]="['/', 'edit', task.id]">Edit</button>
-            <button (click)="onTaskDelete(task.id)">Delete</button>
+            <button type="button" [routerLink]="['/', 'view', task.id]">
+              View
+            </button>
+            <button type="button" [routerLink]="['/', 'edit', task.id]">
+              Edit
+            </button>
+            <button type="button" (click)="onTaskDelete(task.id)">
+              Delete
+            </button>
           </div>
         </div>
       </ng-container>

@@ -12,9 +12,8 @@ export class DateSortPipe implements PipeTransform {
     tasks: Task[] | undefined,
     sortValue: SortValue
   ): Task[] | undefined {
-    console.log('pipe');
     if (tasks && tasks.length !== 0) {
-      let sortedTasks = [...tasks];
+      const sortedTasks = [...tasks];
       if (sortValue === 'ascending') {
         return sortedTasks.sort((a: Task, b: Task) => {
           return new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime();

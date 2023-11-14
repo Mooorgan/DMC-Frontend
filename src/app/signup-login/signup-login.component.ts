@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
@@ -21,9 +21,7 @@ export class SignupLoginComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.activeRoute.url);
     this.subscription = this.activeRoute.url.subscribe((value) => {
-      console.log(value);
       this.loginDisplay = value.length === 0 ? true : false;
     });
 
@@ -48,7 +46,6 @@ export class SignupLoginComponent implements OnInit, OnDestroy {
     if (this.authForm.invalid) {
       return;
     }
-    console.log('Form is submitted');
     const { email, password } = this.authForm.value;
     if (!this.loginDisplay) {
       const { username } = this.authForm.value;

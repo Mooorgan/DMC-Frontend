@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth-guard.guard';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { LogInStatusResolver } from './resolvers/log-in-status.resolver';
 import { SignupLoginComponent } from './signup-login/signup-login.component';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { TaskListComponent } from './task-list/task-list.component';

@@ -1,6 +1,4 @@
-import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { AuthService } from './auth.service';
 import { TaskService } from './task.service';
 
 describe('TestService', () => {

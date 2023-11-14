@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { map, Observable, Subscription, tap } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { map, Observable } from 'rxjs';
 import { SortValue, Task } from '../interfaces/task.interface';
 import { AuthService } from '../services/auth.service';
 import { TaskService } from '../services/task.service';
@@ -29,11 +29,7 @@ export class TaskListComponent implements OnInit {
       map((authStatus) => !!authStatus)
     );
     this.task.getTasks(this.postsPerPage, this.currentPage);
-    this.tasks$ = this.task.tasks$.pipe(
-      tap((data) => {
-        console.log(data, 'task fetched');
-      })
-    );
+    this.tasks$ = this.task.tasks$;
   }
 
   onTaskDelete(id: string) {
@@ -45,6 +41,5 @@ export class TaskListComponent implements OnInit {
   onSort(event: Event) {
     const sortValue = (event.target as HTMLSelectElement).value;
     this.sortValue = sortValue as SortValue;
-    console.log(this.sortValue);
   }
 }
