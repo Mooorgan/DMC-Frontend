@@ -1,33 +1,38 @@
-# TaskManagementFrontend
+<h1 align="center" id="title">Task management minimalistic</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.5.
+<p id="description">User should signup login then create task. Only those users who created those tasks can edit and delete tasks. No user can edit and delete another user's tasks</p>
 
-## Development server
+<h2>🧐 Features</h2>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Here're some of the project's best features:
 
-## Code scaffolding
+- Add tasks
+- View and Edit Tasks
+- User Authorization(one user cannot edit and delete another user's tasks)
+- View all tasks list of every user
+- Sort tasks by due date
+- Signup login and logout
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+<h2>🛠️ Installation Steps:</h2>
 
-## Build
+<p>1. Install dependencies</p>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+npm install
+```
 
-## Running unit tests
+<p>2. Run the app</p>
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+npm start
+```
 
-## Running end-to-end tests
+<h2>💻 Built with</h2>
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Technologies used in the project:
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-"schematics": {
-"@schematics/angular:component": {
-"changeDetection": "OnPush"
-}
-},
+- Angular
+- SCSS
+- Made with Frontend mentor assets
+- Typescript
+- Rxjs
